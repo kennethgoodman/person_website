@@ -18,7 +18,8 @@ class MainHandler(tornado.web.RequestHandler):
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
-        (r"/(.*)", tornado.web.StaticFileHandler, {'path': './static/images/'})
+        (r"/(.*)", tornado.web.StaticFileHandler, {'path': './static/images/'}),
+        (r"/(.*)", tornado.web.StaticFileHandler, {'path': './static/cleartextsignature/'}),
         # /(r"/static/images/(.*)", tornado.web.StaticFileHandler,  {'path':'~/PycharmProjects/person_website/'}),
         # (r'/(github\.png)', tornado.web.StaticFileHandler, {'path':'~/PycharmProjects/person_website/static/images/'})
     ], **settings
@@ -27,5 +28,5 @@ def make_app():
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(80)
+    app.listen(8000)
     tornado.ioloop.IOLoop.current().start()
